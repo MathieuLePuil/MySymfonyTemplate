@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SecurityController!{% endblock %}
+
+{% block body %}
+    <form action="{{ path('app_login') }}" method="POST">
+        <div>
+            <label for="email">Email address</label>
+            <div>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label for="password">Password</label>
+                <div>
+{#                    <a href="{{ path('app_forgot_password') }}">Forgot password?</a>#}
+                </div>
+            </div>
+            <div>
+                <input id="password" name="password" type="password" autocomplete="current-password" required >
+            </div>
+        </div>
+        <div>
+            <button type="submit">Sign in</button>
+        </div>
+    </form>
+    <p>
+        Not a member?
+{#        <a href="{{ path('app_signup') }}">Create account</a>#}
+    </p>
+
+{% endblock %}
