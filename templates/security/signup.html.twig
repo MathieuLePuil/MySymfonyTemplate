@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+
+        {% for message in app.flashes('success') %}
+            <div>
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div>
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <div>
+            <div>
+                {{ form_start(form) }}
+                <div>
+                    <div>
+                        {{ form_row(form.firstname) }}
+                    </div>
+                    <div>
+                        {{ form_row(form.lastname) }}
+                    </div>
+                </div>
+                <div>
+                    {{ form_row(form.username) }}
+                </div>
+                <div>
+                    {{ form_row(form.email) }}
+                </div>
+                <div>
+                    <div>
+                        {{ form_row(form.password.first) }}
+                    </div>
+                    <div>
+                        {{ form_row(form.password.second) }}
+                    </div>
+                </div>
+                <div>
+                    {{ form_row(form.submit) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
