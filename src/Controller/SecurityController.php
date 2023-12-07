@@ -8,9 +8,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -133,7 +137,7 @@ class SecurityController extends AbstractController
     }
 
     #[Route('/login/github/check', name: 'github_connect_check', methods: ['GET'])]
-    public function githubConnectCheck(ClientRegistry $clientRegistry, EntityManagerInterface $em): Response
+    public function githubConnectCheck(ClientRegistry $clientRegistry, EntityManagerInterface $em, TokenStorageInterface $tokenStorage, SessionInterface $session): Response
     {
         $client = $clientRegistry->getClient('github');
 
@@ -152,10 +156,9 @@ class SecurityController extends AbstractController
             $existingUser = $userRepository->findOneBy(['email' => $userData['email']]);
 
             if($existingUser) {
-                $this->addFlash(
-                    'error',
-                    'Email already exists.'
-                );
+                $existingUser->setFirstname($firstName);
+                $existingUser->setLastname($lastName);
+                $newUser = $existingUser;
             } else {
                 $newUser = new User();
                 $newUser->setUsername($userData['login']);
@@ -166,10 +169,16 @@ class SecurityController extends AbstractController
                 $newUser->setPassword('github');
                 $newUser->setFirstname($firstName);
                 $newUser->setLastname($lastName);
-
-                $em->persist($newUser);
-                $em->flush();
             }
+
+            $em->persist($newUser);
+            $em->flush();
+
+            $token = new UsernamePasswordToken($newUser, 'main', $newUser->getRoles());
+
+            $tokenStorage->setToken($token);
+            $session->set('_security_main', serialize($token));
+
             return $this->redirectToRoute('app_home');
 
         } catch (IdentityProviderException $e) {
