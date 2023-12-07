@@ -1,0 +1,8 @@
+knpu_oauth2_client:
+    clients:
+        # configure your clients as described here: https://github.com/knpuniversity/oauth2-client-bundle#configuration
+        github:
+            type: github
+            client_id: '%env(GITHUB_ID)%'
+            client_secret: '%env(GITHUB_SECRET)%'
+            redirect_route: github_connect_check
