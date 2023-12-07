@@ -41,6 +41,9 @@ class SecurityController extends AbstractController
 
         $user = new User();
 
+        $user->setRoles(['ROLE_USER']);
+        $user->setOauth('basic');
+
         $form = $this->createForm(RegistrationType::class, $user);
 
         $form->handleRequest($request);
