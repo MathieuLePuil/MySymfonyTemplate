@@ -11,3 +11,8 @@ knpu_oauth2_client:
             client_id: '%env(DISCORD_ID)%'
             client_secret: '%env(DISCORD_SECRET)%'
             redirect_route: discord_connect_check
+        gitlab:
+            type: gitlab
+            client_id: '%env(GITLAB_ID)%'
+            client_secret: '%env(GITLAB_SECRET)%'
+            redirect_route: gitlab_connect_check

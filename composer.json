@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.17",
         "knpuniversity/oauth2-client-bundle": "^2.17",
         "league/oauth2-github": "^3.1",
+        "omines/oauth2-gitlab": "^3.6",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
