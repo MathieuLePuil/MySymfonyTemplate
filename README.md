@@ -1,7 +1,7 @@
 # MySymfonyTemplate
 
 [![Version](https://img.shields.io/badge/Version-V1.0.0-blue)](https://github.com/MathieuLePuil/MySymfonyTemplate/releases/tag/v1.0.0)
-[![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/MathieuLePuil/MySymfonyTemplate/LICENSE.md)
+[![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/MathieuLePuil/MySymfonyTemplate/blob/main/LICENSE.md)
 ![Symfony](https://img.shields.io/badge/Symfony-V7.0.1-yellow)
 
 This repository is a Symfony 7 template with all the basic elements needed to start a project. The project includes :
