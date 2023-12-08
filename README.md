@@ -1,7 +1,5 @@
 # MySymfonyTemplate
 
----
-
 [![Version](https://img.shields.io/badge/Version-V1.0.0-blue)](https://github.com/MathieuLePuil/MySymfonyTemplate/releases/tag/v1.0.0)
 [![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/MathieuLePuil/MySymfonyTemplate/LICENSE.md)
 ![Symfony](https://img.shields.io/badge/Symfony-V7.0.1-yellow)
@@ -20,8 +18,6 @@ Table of contents :
 3) [OAuth](#oauth)
 
 ## Presentation
-
----
 
 The template contains a single entity: User with the following properties:
 * id
@@ -51,8 +47,6 @@ You can also delete them by following this procedure:
 
 ## Installation
 
----
-
 Prerequisites :
 * PHP 8.2.0 or higher
 * Composer
@@ -71,8 +65,6 @@ If you have all the prerequisites, you can start the installation.
 8) Set up your .env.local with your [oauth](#oauth) credentials
 
 ## OAuth
-
----
 
 To use oauth, you need to create an application on the following platforms:
 * [Discord](https://discord.com/developers/applications)
