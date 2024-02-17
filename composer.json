@@ -1,5 +1,7 @@
 {
+    "name": "mathieulepuil/symfony-saas-boilerplate",
     "type": "project",
+    "description": "Template for Symfony-based SaaS projects",
     "license": "proprietary",
     "minimum-stability": "stable",
     "prefer-stable": true,
